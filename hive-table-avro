@@ -1,0 +1,13 @@
+CREATE EXTERNAL TABLE avro_hive_table
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.avro.AvroSerDe' 
+STORED AS INPUTFORMAT 'org.apache.hadoop.hive.ql.io.avro.AvroContainerInputFormat'
+OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.avro.AvroContainerOutputFormat'
+LOCATION '/Users/kyubro/flume/sink/kafka/customer-avro/19-09-08'
+TBLPROPERTIES ('avro.schema.url'='/Users/kyubro/avro_schema/customer-v1.avsc');
+
+CREATE EXTERNAL TABLE avro_hive_default
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.avro.AvroSerDe' 
+STORED AS INPUTFORMAT 'org.apache.hadoop.hive.ql.io.avro.AvroContainerInputFormat'
+OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.avro.AvroContainerOutputFormat'
+LOCATION '/Users/kyubro/flume/sink/kafka/customer-avro/19-09-08'
+TBLPROPERTIES ('avro.schema.url'='/Users/kyubro/avro_schema/flume_schema.avsc');
