@@ -1,0 +1,1 @@
+connect-standalone config/connect-avro-standalone.properties config/quickstart-connect.properties

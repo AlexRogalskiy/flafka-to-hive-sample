@@ -11,3 +11,10 @@ STORED AS INPUTFORMAT 'org.apache.hadoop.hive.ql.io.avro.AvroContainerInputForma
 OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.avro.AvroContainerOutputFormat'
 LOCATION '/Users/kyubro/flume/sink/kafka/customer-avro/19-09-08'
 TBLPROPERTIES ('avro.schema.url'='/Users/kyubro/avro_schema/flume_schema.avsc');
+
+CREATE EXTERNAL TABLE customer_avro
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.avro.AvroSerDe' 
+STORED AS INPUTFORMAT 'org.apache.hadoop.hive.ql.io.avro.AvroContainerInputFormat'
+OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.avro.AvroContainerOutputFormat'
+LOCATION '/topics/customer-avro-test/partition=0'
+TBLPROPERTIES ('avro.schema.url'='hdfs://localhost:9000/avro-schema/customer-v1.avsc');
